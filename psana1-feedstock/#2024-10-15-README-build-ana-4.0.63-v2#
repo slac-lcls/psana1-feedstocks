@@ -1,0 +1,45 @@
+bin/ana-rel-admin --force --cmd psana-conda-src --name 4.0.58 --basedir `pwd`
+
+
+
+psana-conda-4.0.58/ExpNameDb/src/Exceptions.cpp
+psana-conda-4.0.58/ExpNameDb/src/ExpNameDatabase.py
+sha256sum /sdf/group/lcls/ds/ana/sw/conda1-v3/manage/downloads/anarel/psana-conda-4.0.58.tar.gz
+9a85a44fe24a024a3b4a009725553bcf1b56d952e2a0a88f6895d697be8a0d25  /sdf/group/lcls/ds/ana/sw/conda1-v3/manage/downloads/anarel/psana-conda-4.0.58.tar.gz
+Before "conda build" update version 4.0.58 and sha256sum in psana1-feedstock/recipe/meta.yaml
+  see https://github.com/slac-lcls/psana1-feedstock/blob/main/recipe/meta.yaml
+-- makePsanaCondaSrc: finished in 94.92 seconds
+(conda_build) [psreldev@sdfiana004 manage]$
+
+
+
+
+cd ~psreldev/git/psana1-feedstock/
+...
+conda build -c lcls-i -c conda-forge recipe
+...
+
+
+    make:                          4.4.1-hb9d3cd8_2     conda-forge
+    mesa-dri-drivers-cos6-x86_64:  11.0.7-h9b0a68f_1105 conda-forge
+    mesa-dri1-drivers-cos6-x86_64: 7.11-h9b0a68f_1105   conda-forge
+    mesa-libgl-cos6-x86_64:        11.0.7-h9b0a68f_1105 conda-forge
+    mesa-libgl-devel-cos6-x86_64:  11.0.7-h9b0a68f_1105 conda-forge
+    patch:                         2.7.6-h7f98852_1002  conda-forge
+    sysroot_linux-64:              2.12-he073ed8_17     conda-forge
+
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+Source cache directory is: /sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/src_cache
+INFO:conda_build.source:Source cache directory is: /sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/src_cache
+Downloading source to cache: psana-conda-4.0.63_9a85a44fe2.tar.gz
+INFO:conda_build.source:Downloading source to cache: psana-conda-4.0.63_9a85a44fe2.tar.gz
+Downloading file:///sdf/group/lcls/ds/ana/sw/conda1-v3/manage/downloads/anarel/psana-conda-4.0.63.tar.gz
+INFO:conda_build.source:Downloading file:///sdf/group/lcls/ds/ana/sw/conda1-v3/manage/downloads/anarel/psana-conda-4.0.63.tar.gz
+Success
+INFO:conda_build.source:Success
+SHA256 mismatch: '6041f99762dbc6c40549e1e40ccc1684daa4a16ee66d842c58846269bac3698a' != '9a85a44fe24a024a3b4a009725553bcf1b56d952e2a0a88f6895d697be8a0d25'
+[1]+  Done                    emacs -fg AntiqueWhite2 -bg Black -ms White ~psreldev/git/psana1-feedstock/2024-10-15-README-build-ana-4.0.63-v2  (wd: /sdf/group/lcls/ds/ana/sw/conda1-v3/manage)
+(wd now: ~/git/psana1-feedstock)
+(conda_build) [psreldev@sdfiana004 psana1-feedstock]$

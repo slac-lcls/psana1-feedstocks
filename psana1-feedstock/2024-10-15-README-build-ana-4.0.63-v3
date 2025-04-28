@@ -1,0 +1,100 @@
+bin/ana-rel-admin --force --cmd psana-conda-src --name 4.0.63 --basedir `pwd`
+
+
+
+
+psana-conda-4.0.63/cspad_mod/doc/ChangeLog
+psana-conda-4.0.63/cspad_mod/SConscript
+sha256sum /sdf/group/lcls/ds/ana/sw/conda1-v3/manage/downloads/anarel/psana-conda-4.0.63.tar.gz
+5c16fb4490d920a05a6739b1f7085daaffac7ce9a9a242564382ebc752033357  /sdf/group/lcls/ds/ana/sw/conda1-v3/manage/downloads/anarel/psana-conda-4.0.63.tar.gz
+Before "conda build" update version 4.0.63 and sha256sum in psana1-feedstock/recipe/meta.yaml
+  see https://github.com/slac-lcls/psana1-feedstock/blob/main/recipe/meta.yaml
+-- makePsanaCondaSrc: finished in 72.92 seconds
+(conda_build) [psreldev@sdfiana001 manage]$ psana-conda-4.0.63/cspad_mod/doc/ChangeLog
+psana-conda-4.0.63/cspad_mod/SConscript
+sha256sum /sdf/group/lcls/ds/ana/sw/conda1-v3/manage/downloads/anarel/psana-conda-4.0.63.tar.gz
+5c16fb4490d920a05a6739b1f7085daaffac7ce9a9a242564382ebc752033357  /sdf/group/lcls/ds/ana/sw/conda1-v3/manage/downloads/anarel/psana-conda-4.0.63.tar.gz
+Before "conda build" update version 4.0.63 and sha256sum in psana1-feedstock/recipe/meta.yaml
+  see https://github.com/slac-lcls/psana1-feedstock/blob/main/recipe/meta.yaml
+-- makePsanaCondaSrc: finished in 72.92 seconds
+(conda_build) [psreldev@sdfiana001 manage]$
+
+
+
+========
+
+
+(conda_build) [psreldev@sdfiana001 psana1-feedstock]$ conda build -c lcls-i -c conda-forge recipe
+
+...
+
+Resource usage statistics from testing psana:
+   Process count: 6
+   CPU time: Sys=0:00:05.8, User=0:00:49.0
+   Memory: 966.7M
+   Disk usage: 323.0K
+   Time elapsed: 0:01:28.0
+
+
+TEST END: /sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/linux-64/psana-4.0.63-py39hed0727e_1.tar.bz2
+Renaming work directory '/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1729049461225/work' to '/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1729049461225/work_moved_psana-4.0.63-py39hed0727e_1_linux-64_main_build_loop'
+INFO:conda_build.utils:Renaming work directory '/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1729049461225/work' to '/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1729049461225/work_moved_psana-4.0.63-py39hed0727e_1_linux-64_main_build_loop'
+shutil.move(work)=/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1729049461225/work, dest=/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1729049461225/work_moved_psana-4.0.63-py39hed0727e_1_linux-64_main_build_loop)
+INFO:conda_build.utils:shutil.move(work)=/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1729049461225/work, dest=/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1729049461225/work_moved_psana-4.0.63-py39hed0727e_1_linux-64_main_build_loop)
+# Automatic uploading is disabled
+# If you want to upload package(s) to anaconda.org later, type:
+
+
+# To have conda build upload to anaconda.org automatically, use
+# conda config --set anaconda_upload yes
+anaconda upload \
+    /sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/linux-64/psana-4.0.63-py39hed0727e_1.tar.bz2
+anaconda_upload is not set.  Not uploading wheels: []
+
+INFO :: The inputs making up the hashes for the built packages are as follows:
+{
+  "psana-4.0.63-py39hed0727e_1": {
+    "recipe": {
+      "boost": "1.78.0=py39h7c9e3ff_4",
+      "boost_cpp": "1.78.0=h75c5d50_1",
+      "c_compiler": "gcc",
+      "c_compiler_version": "10",
+      "channel_targets": "lcls-i main",
+      "curl": "7.86.0=h7bff187_1",
+      "cxx_compiler": "gxx",
+      "cxx_compiler_version": "10",
+      "cython": "0.29.32=py39h5a03fae_1",
+      "hdf5": "1.12.1=nompi_h2386368_104",
+      "libcurl": "7.86.0=h7bff187_1",
+      "libpng": "1.6.39=h753d276_0",
+      "libtiff": "4.4.0=h55922b4_4",
+      "libuuid": "2.32.1=h7f98852_1000",
+      "matplotlib_base": "3.6.2=py39hf9fd14e_0",
+      "pytest": "7.2.0=pyhd8ed1ab_2",
+      "qt": "5.15.4=hf11cfaa_0",
+      "scons": "4.4.0=py39hf3d152e_1",
+      "six": "1.16.0=pyh6c4a22f_0",
+      "target_platform": "linux-64",
+      "xorg_libxfixes": "5.0.3=h7f98852_1004",
+      "zlib": "1.2.13=h166bdaf_4"
+    }
+  }
+}
+
+
+####################################################################################
+Resource usage summary:
+
+Total time: 2:19:29.4
+CPU usage: sys=0:03:00.6, user=0:23:36.2
+Maximum memory usage observed: 1.7G
+Total disk usage observed (not including envs): 682.0K
+
+
+####################################################################################
+Source and build intermediates have been left in /sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld.
+There are currently 11 accumulated.
+To remove them, you can run the ```conda build purge``` command
+(conda_build) [psreldev@sdfiana001 psana1-feedstock]$ 
+===
+

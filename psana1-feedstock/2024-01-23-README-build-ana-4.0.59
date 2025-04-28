@@ -1,0 +1,537 @@
+
+2024-01-23 building 4.0.59
+
+> s3dflogin
+ssh psana -l psreldev
+
+ 1000  source /sdf/group/lcls/ds/ana/sw/conda1-v3/manage/bin/psconda.sh
+ 1001  conda deactivate
+ 1002  conda env list
+ 1003  conda activate conda_build
+ 1005  cd /sdf/group/lcls/ds/ana/sw/conda1-v3/manage/
+ 1007  l scratch/
+ 1008  bin/ana-rel-admin --force --cmd psana-conda-src --name 4.0.59 --basedir `pwd`
+ 1009  cd ~psreldev/git/psana1-feedstock/
+ 1011  ema recipe/meta.yaml &
+ 1012  conda build -c lcls-i -c conda-forge recipe
+ 1013  anaconda upload -u lcls-i /sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/linux-64/psana-4.0.59-py39hed0727e_1.tar.bz2
+
+ 1017  conda env list
+ 1018  conda create --name ana-4.0.59-py3 --clone ana-4.0.58-py3
+ 1019  conda deactivate
+ 1020  conda activate ana-4.0.59-py3
+ 1021  conda install -c lcls-i -c conda-forge psana=4.0.59
+ 1022  conda env list
+
+
+
+----------------------------------------------------------------------
+Ran 16 tests in 58.388s
+
+OK
+fname: /sdf/group/lcls/ds/ana/sw/conda1/inst/envs/ana-4.0.58-py3/data/Detector/geometry-def-jungfrau1m.data
+deployed geometry: ./calib/Jungfrau::CalibV1/XppEndstation.0:Jungfrau.0/geometry/0-end.data  
+1-st event det.image: shape:(1064, 1030) size:1095920 dtype:float32 [  5.333496   18.166504    6.833496    3.5004883 -10.166504 ...]
+
+remove dir: ./calib
+
+remove dir: ./work
++ pytest Detector/test/pytest_detector.py
+============================= test session starts ==============================
+platform linux -- Python 3.9.18, pytest-7.4.4, pluggy-1.3.0
+rootdir: $SRC_DIR
+collected 4 items
+
+Detector/test/pytest_detector.py ....                                    [100%]
+
+============================== 4 passed in 11.62s ==============================
+__del__ for det_epix100a
++ exit 0
+
+Resource usage statistics from testing psana:
+   Process count: 6
+   CPU time: Sys=0:00:04.9, User=0:00:37.7
+   Memory: 664.7M
+   Disk usage: 323.0K
+   Time elapsed: 0:01:16.1
+
+
+TEST END: /sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/linux-64/psana-4.0.59-py39hed0727e_1.tar.bz2
+Renaming work directory '/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1706058096497/work' to '/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1706058096497/work_moved_psana-4.0.59-py39hed0727e_1_linux-64_main_build_loop'
+INFO:conda_build.utils:Renaming work directory '/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1706058096497/work' to '/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1706058096497/work_moved_psana-4.0.59-py39hed0727e_1_linux-64_main_build_loop'
+shutil.move(work)=/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1706058096497/work, dest=/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1706058096497/work_moved_psana-4.0.59-py39hed0727e_1_linux-64_main_build_loop)
+INFO:conda_build.utils:shutil.move(work)=/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1706058096497/work, dest=/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1706058096497/work_moved_psana-4.0.59-py39hed0727e_1_linux-64_main_build_loop)
+# Automatic uploading is disabled
+# If you want to upload package(s) to anaconda.org later, type:
+
+
+# To have conda build upload to anaconda.org automatically, use
+# conda config --set anaconda_upload yes
+anaconda upload \
+    /sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/linux-64/psana-4.0.59-py39hed0727e_1.tar.bz2
+anaconda_upload is not set.  Not uploading wheels: []
+
+INFO :: The inputs making up the hashes for the built packages are as follows:
+{
+  "psana-4.0.59-py39hed0727e_1": {
+    "recipe": {
+      "boost": "1.78.0=py39h7c9e3ff_4",
+      "boost_cpp": "1.78.0=h75c5d50_1",
+      "c_compiler": "gcc",
+      "c_compiler_version": "10",
+      "channel_targets": "lcls-i main",
+      "curl": "7.86.0=h7bff187_1",
+      "cxx_compiler": "gxx",
+      "cxx_compiler_version": "10",
+      "cython": "0.29.32=py39h5a03fae_1",
+      "hdf5": "1.12.1=nompi_h2386368_104",
+      "libcurl": "7.86.0=h7bff187_1",
+      "libpng": "1.6.39=h753d276_0",
+      "libtiff": "4.4.0=h55922b4_4",
+      "libuuid": "2.32.1=h7f98852_1000",
+      "matplotlib_base": "3.6.2=py39hf9fd14e_0",
+      "pytest": "7.2.0=pyhd8ed1ab_2",
+      "qt": "5.15.4=hf11cfaa_0",
+      "scons": "4.4.0=py39hf3d152e_1",
+      "six": "1.16.0=pyh6c4a22f_0",
+      "target_platform": "linux-64",
+      "xorg_libxfixes": "5.0.3=h7f98852_1004",
+      "zlib": "1.2.13=h166bdaf_4"
+    }
+  }
+}
+
+
+####################################################################################
+Resource usage summary:
+
+Total time: 0:53:14.7
+CPU usage: sys=0:03:38.5, user=0:24:39.0
+Maximum memory usage observed: 1.8G
+Total disk usage observed (not including envs): 681.8K
+[1]+  Done                    emacs -fg AntiqueWhite2 -bg Black -ms White recipe/meta.yaml
+(conda_build) [psreldev@sdfiana001 psana1-feedstock]
+
+
+
+
+
+(conda_build) [psreldev@sdfiana001 psana1-feedstock]$ anaconda upload -u lcls-i /sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/linux-64/psana-4.0.59-py39hed0727e_1.tar.bz2
+Using Anaconda API: https://api.anaconda.org
+Using "lcls-i" as upload username
+Processing '/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/linux-64/psana-4.0.59-py39hed0727e_1.tar.bz2'
+Detecting file type...
+File type is "Conda"
+Extracting conda attributes for upload
+Creating package "psana"
+Creating release "4.0.59"
+Uploading file "lcls-i/psana/4.0.59/linux-64/psana-4.0.59-py39hed0727e_1.tar.bz2"
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 15.5M/15.5M [00:01<00:00, 11.5MB/s]
+Upload complete
+
+conda located at:
+https://anaconda.org/lcls-i/psana
+
+(conda_build) [psreldev@sdfiana001 psana1-feedstock]$ l
+
+
+
+
+
+(conda_build) [psreldev@sdfiana001 psana1-feedstock]$ conda create --name ana-4.0.59-py3 --clone ana-4.0.58-py3
+Retrieving notices: ...working... done
+Source:      /sdf/group/lcls/ds/ana/sw/conda1/inst/envs/ana-4.0.58-py3
+Destination: /sdf/group/lcls/ds/ana/sw/conda1/inst/envs/ana-4.0.59-py3
+Packages: 488
+Files: 12
+
+Downloading and Extracting Packages:
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+Downloading and Extracting Packages:
+
+Preparing transaction: done
+Verifying transaction: - 
+SafetyError: The package for psana located at /sdf/group/lcls/ds/ana/sw/conda1-v3/inst/pkgs/psana-4.0.58-py39hed0727e_1
+appears to be corrupted. The path 'lib/python3.9/site-packages/psana/smalldata.py'
+has an incorrect size.
+  reported size: 43686 bytes
+  actual size: 43688 bytes
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::gcc-10.4.0-hb92f740_11
+  path: 'bin/cpp'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-libs-8.0.31-h28c427c_0
+  path: 'lib/libmysqlclient.so'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/bulgarian/errmsg.sys'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/charsets/Index.xml'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/charsets/README'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/charsets/armscii8.xml'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/charsets/ascii.xml'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/charsets/cp1250.xml'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/charsets/cp1251.xml'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/charsets/cp1256.xml'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/charsets/cp1257.xml'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/charsets/cp850.xml'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/charsets/cp852.xml'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/charsets/cp866.xml'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/charsets/dec8.xml'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/charsets/geostd8.xml'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/charsets/greek.xml'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/charsets/hebrew.xml'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/charsets/hp8.xml'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/charsets/keybcs2.xml'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/charsets/koi8r.xml'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/charsets/koi8u.xml'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/charsets/latin1.xml'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/charsets/latin2.xml'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/charsets/latin5.xml'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/charsets/latin7.xml'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/charsets/macce.xml'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/charsets/macroman.xml'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/charsets/swe7.xml'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/czech/errmsg.sys'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/danish/errmsg.sys'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/dictionary.txt'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/dutch/errmsg.sys'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/english/errmsg.sys'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/estonian/errmsg.sys'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/french/errmsg.sys'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/german/errmsg.sys'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/greek/errmsg.sys'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/hungarian/errmsg.sys'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/italian/errmsg.sys'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/japanese/errmsg.sys'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/korean/errmsg.sys'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/norwegian-ny/errmsg.sys'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/norwegian/errmsg.sys'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/polish/errmsg.sys'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/portuguese/errmsg.sys'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/romanian/errmsg.sys'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/russian/errmsg.sys'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/serbian/errmsg.sys'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/slovak/errmsg.sys'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/spanish/errmsg.sys'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/swedish/errmsg.sys'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge/linux-64::mysql-5.7.20-hf484d3e_1001, conda-forge/linux-64::mysql-common-8.0.31-haf5c9bc_0
+  path: 'share/mysql/ukrainian/errmsg.sys'
+
+
+
+done
+Executing transaction: /  
+For Linux 64, Open MPI is built with CUDA awareness but this support is disabled by default.
+To enable it, please set the environment variable OMPI_MCA_opal_cuda_support=true before
+launching your MPI processes. Equivalently, you can set the MCA parameter in the command line:
+mpiexec --mca opal_cuda_support 1 ...
+ 
+In addition, the UCX support is also built but disabled by default.
+To enable it, first install UCX (conda install -c conda-forge ucx). Then, set the environment
+variables OMPI_MCA_pml="ucx" OMPI_MCA_osc="ucx" before launching your MPI processes.
+Equivalently, you can set the MCA parameters in the command line:
+mpiexec --mca pml ucx --mca osc ucx ...
+Note that you might also need to set UCX_MEMTYPE_CACHE=n for CUDA awareness via UCX.
+Please consult UCX's documentation for detail.
+ 
+
+done
+#
+# To activate this environment, use
+#
+#     $ conda activate ana-4.0.59-py3
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+(conda_build) [psreldev@sdfiana001 psana1-feedstock]$ 
+
+
+
+
+
+(conda_build) [psreldev@sdfiana001 psana1-feedstock]$ conda deactivate
+(base) [psreldev@sdfiana001 psana1-feedstock]$ conda activate ana-4.0.59-py3
+(ana-4.0.59-py3) [psreldev@sdfiana001 psana1-feedstock]$ conda install -c lcls-i -c conda-forge psana=4.0.59
+Channels:
+ - lcls-i
+ - conda-forge
+ - defaults
+ - lcls-ii
+ - cogsci
+Platform: linux-64
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /sdf/group/lcls/ds/ana/sw/conda1/inst/envs/ana-4.0.59-py3
+
+  added / updated specs:
+    - psana=4.0.59
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    psana-4.0.59               |   py39hed0727e_1        15.5 MB  lcls-i
+    ------------------------------------------------------------
+                                           Total:        15.5 MB
+
+The following packages will be UPDATED:
+
+  psana                               4.0.58-py39hed0727e_1 --> 4.0.59-py39hed0727e_1 
+
+
+Proceed ([y]/n)? y
+
+
+Downloading and Extracting Packages:
+                                                                                                                                                                                               
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+(ana-4.0.59-py3) [psreldev@sdfiana001 psana1-feedstock]$
+
+
+
+
+
+
+
+BUILDING RELEASE ON PCDS
+
+
+(ana-4.0.58-py3) [psreldev@psbuild-rhel7-01 ~]$ conda create -n ana-4.0.59-py3 --file ana-4.0.59-py3.txt
+
+Downloading and Extracting Packages:
+ca-certificates-2023 | ####################################################################################################################################################################### | 100%^                                                                                                                                                                                                      
+                                                                                                                                                                                                      
+Downloading and Extracting Packages:                                                                                                                                                                  
+                                                                                                                                                                                                      
+Preparing transaction: done                                                                                                                                                                           
+Verifying transaction: done                                                                                                                                                                           
+Executing transaction: \                                                                                                                                                                              
+For Linux 64, Open MPI is built with CUDA awareness but this support is disabled by default.                                                                                                          
+To enable it, please set the environment variable OMPI_MCA_opal_cuda_support=true before                                                                                                              
+launching your MPI processes. Equivalently, you can set the MCA parameter in the command line:                                                                                                        
+mpiexec --mca opal_cuda_support 1 ...                                                                                                                                                                 
+                                                                                                                                                                                                      
+In addition, the UCX support is also built but disabled by default.                                                                                                                                   
+To enable it, first install UCX (conda install -c conda-forge ucx). Then, set the environment                                                                                                         
+variables OMPI_MCA_pml="ucx" OMPI_MCA_osc="ucx" before launching your MPI processes.                                                                                                                  
+Equivalently, you can set the MCA parameters in the command line:                                                                                                                                     
+mpiexec --mca pml ucx --mca osc ucx ...                                                                                                                                                               
+Note that you might also need to set UCX_MEMTYPE_CACHE=n for CUDA awareness via UCX.                                                                                                                  
+Please consult UCX's documentation for detail.                                                                                                                                                        
+                                                                                                                                                                                                      
+                                                                                                                                                                                                      
+done                                                                                                                                                                                                  
+(ana-4.0.58-py3) [psreldev@psbuild-rhel7-01 ~]$ 

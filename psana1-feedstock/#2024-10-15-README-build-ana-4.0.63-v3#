@@ -1,0 +1,150 @@
+bin/ana-rel-admin --force --cmd psana-conda-src --name 4.0.63 --basedir `pwd`
+
+
+
+
+psana-conda-4.0.63/cspad_mod/doc/ChangeLog
+psana-conda-4.0.63/cspad_mod/SConscript
+sha256sum /sdf/group/lcls/ds/ana/sw/conda1-v3/manage/downloads/anarel/psana-conda-4.0.63.tar.gz
+5c16fb4490d920a05a6739b1f7085daaffac7ce9a9a242564382ebc752033357  /sdf/group/lcls/ds/ana/sw/conda1-v3/manage/downloads/anarel/psana-conda-4.0.63.tar.gz
+Before "conda build" update version 4.0.63 and sha256sum in psana1-feedstock/recipe/meta.yaml
+  see https://github.com/slac-lcls/psana1-feedstock/blob/main/recipe/meta.yaml
+-- makePsanaCondaSrc: finished in 72.92 seconds
+(conda_build) [psreldev@sdfiana001 manage]$ psana-conda-4.0.63/cspad_mod/doc/ChangeLog
+psana-conda-4.0.63/cspad_mod/SConscript
+sha256sum /sdf/group/lcls/ds/ana/sw/conda1-v3/manage/downloads/anarel/psana-conda-4.0.63.tar.gz
+5c16fb4490d920a05a6739b1f7085daaffac7ce9a9a242564382ebc752033357  /sdf/group/lcls/ds/ana/sw/conda1-v3/manage/downloads/anarel/psana-conda-4.0.63.tar.gz
+Before "conda build" update version 4.0.63 and sha256sum in psana1-feedstock/recipe/meta.yaml
+  see https://github.com/slac-lcls/psana1-feedstock/blob/main/recipe/meta.yaml
+-- makePsanaCondaSrc: finished in 72.92 seconds
+(conda_build) [psreldev@sdfiana001 manage]$
+
+
+
+
+
+(conda_build) [psreldev@sdfiana001 psana1-feedstock]$ anaconda upload -u lcls-i  /sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/linux-64/psana-4.0.63-py39hed0727e_1.tar.bz2
+Using Anaconda API: https://api.anaconda.org
+Using "lcls-i" as upload username
+Processing '/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/linux-64/psana-4.0.63-py39hed0727e_1.tar.bz2'
+Detecting file type...
+File type is "Conda"
+Extracting conda attributes for upload
+Creating package "psana"
+Creating release "4.0.63"
+Uploading file "lcls-i/psana/4.0.63/linux-64/psana-4.0.63-py39hed0727e_1.tar.bz2"
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 15.5M/15.5M [00:01<00:00, 10.5MB/s]
+Upload complete
+
+conda located at:
+https://anaconda.org/lcls-i/psana
+
+(conda_build) [psreldev@sdfiana001 psana1-feedstock]$ (conda_build) [psreldev@sdfiana001 psana1-feedstock]$ anaconda upload -u lcls-i  /sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/linux-64/psana-4.0.63-py39hed0727e_1.tar.bz2
+Using Anaconda API: https://api.anaconda.org
+Using "lcls-i" as upload username
+Processing '/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/linux-64/psana-4.0.63-py39hed0727e_1.tar.bz2'
+Detecting file type...
+File type is "Conda"
+Extracting conda attributes for upload
+Creating package "psana"
+Creating release "4.0.63"
+Uploading file "lcls-i/psana/4.0.63/linux-64/psana-4.0.63-py39hed0727e_1.tar.bz2"
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 15.5M/15.5M [00:01<00:00, 10.5MB/s]
+Upload complete
+
+conda located at:
+https://anaconda.org/lcls-i/psana
+
+(conda_build) [psreldev@sdfiana001 psana1-feedstock]$
+
+
+
+
+
+
+
+
+(conda_build) [psreldev@sdfiana001 psana1-feedstock]$ conda create --name ana-4.0.63-py3 --clone ana-4.0.62-py3
+Retrieving notices: ...working... done
+Source:      /sdf/group/lcls/ds/ana/sw/conda1/inst/envs/ana-4.0.62-py3
+Destination: /sdf/group/lcls/ds/ana/sw/conda1/inst/envs/ana-4.0.63-py3
+Packages: 499
+Files: 14
+
+Downloading and Extracting Packages:
+
+
+Downloading and Extracting Packages:
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: /  
+For Linux 64, Open MPI is built with CUDA awareness but this support is disabled by default.
+To enable it, please set the environment variable OMPI_MCA_opal_cuda_support=true before
+launching your MPI processes. Equivalently, you can set the MCA parameter in the command line:
+mpiexec --mca opal_cuda_support 1 ...
+ 
+In addition, the UCX support is also built but disabled by default.
+To enable it, first install UCX (conda install -c conda-forge ucx). Then, set the environment
+variables OMPI_MCA_pml="ucx" OMPI_MCA_osc="ucx" before launching your MPI processes.
+Equivalently, you can set the MCA parameters in the command line:
+mpiexec --mca pml ucx --mca osc ucx ...
+Note that you might also need to set UCX_MEMTYPE_CACHE=n for CUDA awareness via UCX.
+Please consult UCX's documentation for detail.
+ 
+
+done
+#
+# To activate this environment, use
+#
+#     $ conda activate ana-4.0.63-py3
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+(conda_build) [psreldev@sdfiana001 psana1-feedstock]$ 
+
+
+
+
+(base) [psreldev@sdfiana001 psana1-feedstock]$ conda activate ana-4.0.63-py3
+(ana-4.0.63-py3) [psreldev@sdfiana001 psana1-feedstock]$
+
+
+
+
+
+(ana-4.0.63-py3) [psreldev@sdfiana001 psana1-feedstock]$ conda install -c lcls-i -c conda-forge psana=4.0.63
+Channels:
+ - lcls-i
+ - conda-forge
+ - defaults
+ - lcls-ii
+ - cogsci
+Platform: linux-64
+Collecting package metadata (repodata.json): done
+Solving environment: failed
+
+LibMambaUnsatisfiableError: Encountered problems while solving:
+  - package psana-4.0.63-py39hed0727e_1 requires libstdcxx, but none of the providers can be installed
+
+Could not solve for environment specs
+The following packages are incompatible
+├─ libgcc-ng 12.2.0.*  is requested and can be installed;
+└─ psana 4.0.63**  is not installable because it requires
+   └─ libstdcxx but there are no viable options
+      ├─ libstdcxx 12.4.0 would require
+      │  └─ libgcc 12.4.0 h77fa898_1, which requires
+      │     └─ libgcc-ng ==12.4.0 *_1, which conflicts with any installable versions previously reported;
+      ├─ libstdcxx 13.3.0 would require
+      │  └─ libgcc 13.3.0 h77fa898_1, which requires
+      │     └─ libgcc-ng ==13.3.0 *_1, which conflicts with any installable versions previously reported;
+      ├─ libstdcxx 14.1.0 would require
+      │  └─ libgcc 14.1.0 h77fa898_1, which requires
+      │     └─ libgcc-ng ==14.1.0 *_1, which conflicts with any installable versions previously reported;
+      └─ libstdcxx 14.2.0 would require
+         └─ libgcc 14.2.0 h77fa898_1, which requires
+            └─ libgcc-ng ==14.2.0 *_1, which conflicts with any installable versions previously reported.
+
+(ana-4.0.63-py3) [psreldev@sdfiana001 psana1-feedstock]$ 

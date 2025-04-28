@@ -1,0 +1,57 @@
+{% set name = "hdf5plugin" %}
+{% set version = "4.2.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 500c3de00fb80b3a588808776e89a90e8f2fc5353f0b5e921750c93030ed2d36
+
+build:
+  number: 0
+  script_env:
+    - HDF5PLUGIN_SSE2=True  # [x86]
+    - HDF5PLUGIN_SSE2=False  # [not x86]
+    - HDF5PLUGIN_NATIVE=False
+    - HDF5PLUGIN_AVX2=False
+    - HDF5PLUGIN_AVX512=False
+    - HDF5PLUGIN_BMI2=False
+    - HDF5PLUGIN_OPENMP=False
+
+requirements:
+  build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - {{ compiler("c") }}
+    - {{ compiler('cxx') }}
+  host:
+    - pip
+    - python
+    - setuptools
+    - hdf5
+    - py-cpuinfo ==8.0.0
+  run:
+    - h5py
+    - python
+
+test:
+  imports:
+    - hdf5plugin
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://github.com/silx-kit/hdf5plugin
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: HDF5 Plugins for windows, MacOS, and linux
+
+extra:
+  recipe-maintainers:
+    - valmar
+    - chrisvam

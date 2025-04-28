@@ -1,0 +1,12 @@
+bin/ana-rel-admin --force --cmd psana-conda-src --name 4.0.58 --basedir `pwd`
+
+
+
+psana-conda-4.0.58/ExpNameDb/src/Exceptions.cpp
+psana-conda-4.0.58/ExpNameDb/src/ExpNameDatabase.py
+sha256sum /sdf/group/lcls/ds/ana/sw/conda1-v3/manage/downloads/anarel/psana-conda-4.0.58.tar.gz
+9a85a44fe24a024a3b4a009725553bcf1b56d952e2a0a88f6895d697be8a0d25  /sdf/group/lcls/ds/ana/sw/conda1-v3/manage/downloads/anarel/psana-conda-4.0.58.tar.gz
+Before "conda build" update version 4.0.58 and sha256sum in psana1-feedstock/recipe/meta.yaml
+  see https://github.com/slac-lcls/psana1-feedstock/blob/main/recipe/meta.yaml
+-- makePsanaCondaSrc: finished in 94.92 seconds
+(conda_build) [psreldev@sdfiana004 manage]$ 

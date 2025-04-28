@@ -1,0 +1,20 @@
+bin/ana-rel-admin --force --cmd psana-conda-src --name 4.0.63 --basedir `pwd`
+
+
+
+
+psana-conda-4.0.63/cspad_mod/doc/ChangeLog
+psana-conda-4.0.63/cspad_mod/SConscript
+sha256sum /sdf/group/lcls/ds/ana/sw/conda1-v3/manage/downloads/anarel/psana-conda-4.0.63.tar.gz
+5c16fb4490d920a05a6739b1f7085daaffac7ce9a9a242564382ebc752033357  /sdf/group/lcls/ds/ana/sw/conda1-v3/manage/downloads/anarel/psana-conda-4.0.63.tar.gz
+Before "conda build" update version 4.0.63 and sha256sum in psana1-feedstock/recipe/meta.yaml
+  see https://github.com/slac-lcls/psana1-feedstock/blob/main/recipe/meta.yaml
+-- makePsanaCondaSrc: finished in 72.92 seconds
+(conda_build) [psreldev@sdfiana001 manage]$ psana-conda-4.0.63/cspad_mod/doc/ChangeLog
+psana-conda-4.0.63/cspad_mod/SConscript
+sha256sum /sdf/group/lcls/ds/ana/sw/conda1-v3/manage/downloads/anarel/psana-conda-4.0.63.tar.gz
+5c16fb4490d920a05a6739b1f7085daaffac7ce9a9a242564382ebc752033357  /sdf/group/lcls/ds/ana/sw/conda1-v3/manage/downloads/anarel/psana-conda-4.0.63.tar.gz
+Before "conda build" update version 4.0.63 and sha256sum in psana1-feedstock/recipe/meta.yaml
+  see https://github.com/slac-lcls/psana1-feedstock/blob/main/recipe/meta.yaml
+-- makePsanaCondaSrc: finished in 72.92 seconds
+(conda_build) [psreldev@sdfiana001 manage]$ 

@@ -1,0 +1,310 @@
+
+(conda_build) [psreldev@sdfiana002 psana1-feedstock]$ conda build -c lcls-i -c conda-forge recipe
+...
+
+Usage: psana [options] [dataset ...]
+
+  Available options:
+    {-h|-?|--help    }         print help message
+    {-v|--verbose    } (incr)  verbose output, multiple allowed (initial: 0)
+    {-q|--quiet      } (incr)  quieter output, multiple allowed (initial: 2)
+    {-b|--calib-dir  } path    calibration directory name, may include {exp} and {instr}, if left empty then do not do calibrations (default: "")
+    {-c|--config     } path    configuration file, by default use psana.cfg if it exists (default: "")
+    {-e|--experiment } string  experiment name, format: XPP:xpp12311 or xpp12311, by default guess it from data (default: "")
+    {-j|--job-name   } string  job name, default is to generate from input file names (default: "")
+    {-m|--module     } name    module name, more than one possible
+    {-n|--num-events } number  maximum number of events to process, 0 means all (default: 0)
+    {-s|--skip-events} number  number of events to skip (default: 0)
+    {-p|--num-cpu    } number  number greater than 0 enables multi-processing (default: 0)
+    {-o|--option     } string  configuration options, format: module.option[=value]
+
+  Positional parameters:
+    dataset - input dataset specification (list of file names or exp=cxi12345:run=123:...)
+
++ pytest test_sample.py
+============================= test session starts ==============================
+platform linux -- Python 3.9.18, pytest-8.2.0, pluggy-1.5.0
+rootdir: $SRC_DIR
+collected 1 item
+
+test_sample.py .                                                         [100%]
+
+============================== 1 passed in 0.03s ===============================
++ python Detector/test/test_detector
+test_01_xtc_file_is_available (__main__.test_D01_opal1000)
+- test that xtc file is available for opal1000 ... FAIL
+test_02_det_raw (__main__.test_D01_opal1000)
+- test det.raw(evt) for opal1000 ... 2024-05-10 16:56:53.351 [ERR] {XtcInput.SharedFile} SharedFile.cpp:90 - failed to open input XTC file: /tmp/data_test/xtc/data-xppn4116-r0137-3events-opal1000.xtc
+ERROR
+test_01_xtc_file_is_available (__main__.test_D02_epix100a)
+- test that xtc file is available for epix100a ... FAIL
+test_02_det_raw (__main__.test_D02_epix100a)
+- test det.raw(evt) for epix100a ... 2024-05-10 16:56:53.786 [ERR] {XtcInput.SharedFile} SharedFile.cpp:90 - failed to open input XTC file: /tmp/data_test/xtc/data-xppn4116-r0137-3events-epix100a.xtc
+ERROR
+test_03_epix100a_calibrun (__main__.test_D02_epix100a)
+- test command calibrun for epix100a ... 
+submit in subprocess command:
+  calibrun -e xppn4116 -r 137 -x /tmp/data_test/xtc/data-xppn4116-r0137-3events-epix100a.xtc -d EPIX100A -c ./calib -w work -P -D --nrecs1 2 -n 4 -m 4
+submit in subprocess command:
+  calibrun -e xppn4116 -r 137 -x /tmp/data_test/xtc/data-xppn4116-r0137-3events-epix100a.xtc -d EPIX100A -c ./calib -w work -P -D --nrecs1 2 -n 4 -m 4
+
+subprocess is started with tmp log: ./work/log-subproc-epix100a
+
+FAIL
+test_04_epix100a_det_image (__main__.test_D02_epix100a)
+- test det.image(evt) for epix100a ... subprocess is working for 5 sec 
+responce: subprocess is completed
+
+
+2024-05-10 16:56:58.867 [ERR] {XtcInput.SharedFile} SharedFile.cpp:90 - failed to open input XTC file: /tmp/data_test/xtc/data-xppn4116-r0137-3events-epix100a.xtc
+ERROR
+test_01_xtc_file_is_available (__main__.test_D03_epix10kaquad)
+- test that xtc file is available for epix10ka(quad) ... FAIL
+test_02_det_raw (__main__.test_D03_epix10kaquad)
+- test det.raw(evt) for epix10ka(quad) ... 2024-05-10 16:56:58.868 [ERR] {XtcInput.SharedFile} SharedFile.cpp:90 - failed to open input XTC file: /tmp/data_test/xtc/data-xcsl1004621-r0010-3events-epix10kaquad.xtc
+ERROR
+test_03_epix10ka_pedestals_calibration (__main__.test_D03_epix10kaquad)
+- test command epix10ka_pedestals_calibration ... fname: /sdf/group/lcls/ds/ana/sw/conda1/inst/envs/ana-4.0.58-py3/data/Detector/geometry-def-epix100a.data
+deployed geometry: ./calib/Epix100a::CalibV1/XppGon.0:Epix100a.1/geometry/0-end.data  
+
+submit in subprocess command:
+  epix10ka_pedestals_calibration -d XcsEndstation.0:Epix10kaQuad.0 -e xcsl1004621 -r 10 -x /tmp/data_test/xtc/data-xcsl1004621-r0010-3events-epix10kaquad.xtc -o work -c 0
+subprocess is started with tmp log: ./work/log-subproc-epix10kaquad-process.txt
+
+FAIL
+test_04_epix10ka_deploy_constants (__main__.test_D03_epix10kaquad)
+- test command epix10ka_deploy_constants ... subprocess is working for 5 sec 
+responce: subprocess is completed
+
+submit in subprocess command:
+  epix10ka_deploy_constants -d XcsEndstation.0:Epix10kaQuad.0 -e xcsl1004621 -r 10 -x /tmp/data_test/xtc/data-xcsl1004621-r0010-3events-epix10kaquad.xtc -o work -D -c calib
+subprocess is started with tmp log: ./work/log-subproc-epix10kaquad-deploy.txt
+
+FAIL
+test_05_epix10ka_det_image (__main__.test_D03_epix10kaquad)
+- test det.image(evt) for epix10ka(quad) ... subprocess is working for 5 sec 
+responce: subprocess is completed
+
+2024-05-10 16:57:08.955 [ERR] {XtcInput.SharedFile} SharedFile.cpp:90 - failed to open input XTC file: /tmp/data_test/xtc/data-xcsl1004621-r0010-3events-epix10kaquad.xtc
+ERROR
+test_01_xtc_file_is_available (__main__.test_D04_jungfrau1m)
+- test that xtc file is available for jungfrau1m ... FAIL
+test_02_det_raw (__main__.test_D04_jungfrau1m)
+- test det.raw(evt) for jungfrau1m ... 2024-05-10 16:57:08.960 [ERR] {XtcInput.SharedFile} SharedFile.cpp:90 - failed to open input XTC file: /tmp/data_test/xtc/data-xppl1001021-r0023-3events-jungfrau1m.xtc
+ERROR
+test_03_jungfrau_dark_proc (__main__.test_D04_jungfrau1m)
+- test command jungfrau_dark_proc ... fname: /sdf/group/lcls/ds/ana/sw/conda1/inst/envs/ana-4.0.58-py3/data/Detector/geometry-def-epix10kaquad.data
+deployed geometry: ./calib/Epix10kaQuad::CalibV1/XcsEndstation.0:Epix10kaQuad.0/geometry/0-end.data  
+
+submit in subprocess command:
+  jungfrau_dark_proc -d /tmp/data_test/xtc/data-xppl1001021-r0023-3events-jungfrau1m.xtc -s XppEndstation.0:Jungfrau.0 --nrecs 3 --nrecs1 2 -o work --expname xppl1001021
+subprocess is started with tmp log: ./work/log-subproc-jungfrau1m-process.txt
+
+FAIL
+test_04_jungfrau_deploy_constants (__main__.test_D04_jungfrau1m)
+- test command epix10ka_deploy_constants ... subprocess is working for 5 sec 
+responce: subprocess is completed
+
+submit in subprocess command:
+  jungfrau_deploy_constants -d XppEndstation.0:Jungfrau.0 -e xppl1001021 -r23 -D -x /tmp/data_test/xtc/data-xppl1001021-r0023-3events-jungfrau1m.xtc -o work -c calib -E
+subprocess is started with tmp log: ./work/log-subproc-jungfrau1m-deploy.txt
+
+FAIL
+test_05_jungfrau_det_image (__main__.test_D04_jungfrau1m)
+- test det.image(evt) for jungfrau1m ... subprocess is working for 5 sec 
+responce: subprocess is completed
+
+2024-05-10 16:57:19.060 [ERR] {XtcInput.SharedFile} SharedFile.cpp:90 - failed to open input XTC file: /tmp/data_test/xtc/data-xppl1001021-r0023-3events-jungfrau1m.xtc
+ERROR
+
+======================================================================
+ERROR: test_02_det_raw (__main__.test_D01_opal1000)
+- test det.raw(evt) for opal1000
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/test_tmp/Detector/test/test_detector", line 122, in test_02_det_raw
+    test_det_raw(self.fname_xtc, detname='XppEndstation.0:Opal1000.1',\
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/test_tmp/Detector/test/test_detector", line 78, in test_det_raw
+    ds = psana.DataSource(fname_xtc)
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/_test_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehol/lib/python3.9/site-packages/psana/datasource.py", line 65, in DataSource
+    ds = fwk.dataSource(*args)
+RuntimeError: FileOpenException: failed to open file /tmp/data_test/xtc/data-xppn4116-r0137-3events-opal1000.xtc: No such file or directory [in function SharedFileImpl at XtcInput/src/SharedFile.cpp:91]
+
+======================================================================
+ERROR: test_02_det_raw (__main__.test_D02_epix100a)
+- test det.raw(evt) for epix100a
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/test_tmp/Detector/test/test_detector", line 162, in test_02_det_raw
+    test_det_raw(self.fname_xtc,\
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/test_tmp/Detector/test/test_detector", line 78, in test_det_raw
+    ds = psana.DataSource(fname_xtc)
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/_test_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehol/lib/python3.9/site-packages/psana/datasource.py", line 65, in DataSource
+    ds = fwk.dataSource(*args)
+RuntimeError: FileOpenException: failed to open file /tmp/data_test/xtc/data-xppn4116-r0137-3events-epix100a.xtc: No such file or directory [in function SharedFileImpl at XtcInput/src/SharedFile.cpp:91]
+
+======================================================================
+ERROR: test_04_epix100a_det_image (__main__.test_D02_epix100a)
+- test det.image(evt) for epix100a
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/test_tmp/Detector/test/test_detector", line 190, in test_04_epix100a_det_image
+    ds = psana.DataSource(self.fname_xtc)
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/_test_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehol/lib/python3.9/site-packages/psana/datasource.py", line 65, in DataSource
+    ds = fwk.dataSource(*args)
+RuntimeError: FileOpenException: failed to open file /tmp/data_test/xtc/data-xppn4116-r0137-3events-epix100a.xtc: No such file or directory [in function SharedFileImpl at XtcInput/src/SharedFile.cpp:91]
+
+======================================================================
+ERROR: test_02_det_raw (__main__.test_D03_epix10kaquad)
+- test det.raw(evt) for epix10ka(quad)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/test_tmp/Detector/test/test_detector", line 220, in test_02_det_raw
+    test_det_raw(self.fname_xtc,\
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/test_tmp/Detector/test/test_detector", line 78, in test_det_raw
+    ds = psana.DataSource(fname_xtc)
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/_test_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehol/lib/python3.9/site-packages/psana/datasource.py", line 65, in DataSource
+    ds = fwk.dataSource(*args)
+RuntimeError: FileOpenException: failed to open file /tmp/data_test/xtc/data-xcsl1004621-r0010-3events-epix10kaquad.xtc: No such file or directory [in function SharedFileImpl at XtcInput/src/SharedFile.cpp:91]
+
+======================================================================
+ERROR: test_05_epix10ka_det_image (__main__.test_D03_epix10kaquad)
+- test det.image(evt) for epix10ka(quad)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/test_tmp/Detector/test/test_detector", line 264, in test_05_epix10ka_det_image
+    ds = psana.DataSource(self.fname_xtc)
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/_test_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehol/lib/python3.9/site-packages/psana/datasource.py", line 65, in DataSource
+    ds = fwk.dataSource(*args)
+RuntimeError: FileOpenException: failed to open file /tmp/data_test/xtc/data-xcsl1004621-r0010-3events-epix10kaquad.xtc: No such file or directory [in function SharedFileImpl at XtcInput/src/SharedFile.cpp:91]
+
+======================================================================
+ERROR: test_02_det_raw (__main__.test_D04_jungfrau1m)
+- test det.raw(evt) for jungfrau1m
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/test_tmp/Detector/test/test_detector", line 294, in test_02_det_raw
+    test_det_raw(self.fname_xtc,\
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/test_tmp/Detector/test/test_detector", line 78, in test_det_raw
+    ds = psana.DataSource(fname_xtc)
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/_test_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehol/lib/python3.9/site-packages/psana/datasource.py", line 65, in DataSource
+    ds = fwk.dataSource(*args)
+RuntimeError: FileOpenException: failed to open file /tmp/data_test/xtc/data-xppl1001021-r0023-3events-jungfrau1m.xtc: No such file or directory [in function SharedFileImpl at XtcInput/src/SharedFile.cpp:91]
+
+======================================================================
+ERROR: test_05_jungfrau_det_image (__main__.test_D04_jungfrau1m)
+- test det.image(evt) for jungfrau1m
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/test_tmp/Detector/test/test_detector", line 336, in test_05_jungfrau_det_image
+    ds = psana.DataSource(self.fname_xtc)
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/_test_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehol/lib/python3.9/site-packages/psana/datasource.py", line 65, in DataSource
+    ds = fwk.dataSource(*args)
+RuntimeError: FileOpenException: failed to open file /tmp/data_test/xtc/data-xppl1001021-r0023-3events-jungfrau1m.xtc: No such file or directory [in function SharedFileImpl at XtcInput/src/SharedFile.cpp:91]
+
+======================================================================
+FAIL: test_01_xtc_file_is_available (__main__.test_D01_opal1000)
+- test that xtc file is available for opal1000
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/test_tmp/Detector/test/test_detector", line 118, in test_01_xtc_file_is_available
+    path_exists(self.fname_xtc)
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/test_tmp/Detector/test/test_detector", line 74, in path_exists
+    assert os.path.exists(path)
+AssertionError
+
+======================================================================
+FAIL: test_01_xtc_file_is_available (__main__.test_D02_epix100a)
+- test that xtc file is available for epix100a
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/test_tmp/Detector/test/test_detector", line 158, in test_01_xtc_file_is_available
+    path_exists(self.fname_xtc)
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/test_tmp/Detector/test/test_detector", line 74, in path_exists
+    assert os.path.exists(path)
+AssertionError
+
+======================================================================
+FAIL: test_03_epix100a_calibrun (__main__.test_D02_epix100a)
+- test command calibrun for epix100a
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/test_tmp/Detector/test/test_detector", line 178, in test_03_epix100a_calibrun
+    assert os.path.exists(fname_peds)
+AssertionError
+
+======================================================================
+FAIL: test_01_xtc_file_is_available (__main__.test_D03_epix10kaquad)
+- test that xtc file is available for epix10ka(quad)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/test_tmp/Detector/test/test_detector", line 216, in test_01_xtc_file_is_available
+    path_exists(self.fname_xtc)
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/test_tmp/Detector/test/test_detector", line 74, in path_exists
+    assert os.path.exists(path)
+AssertionError
+
+======================================================================
+FAIL: test_03_epix10ka_pedestals_calibration (__main__.test_D03_epix10kaquad)
+- test command epix10ka_pedestals_calibration
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/test_tmp/Detector/test/test_detector", line 238, in test_03_epix10ka_pedestals_calibration
+    path_exists(fname_panel_peds, msg='file exists: ')
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/test_tmp/Detector/test/test_detector", line 74, in path_exists
+    assert os.path.exists(path)
+AssertionError
+
+======================================================================
+FAIL: test_04_epix10ka_deploy_constants (__main__.test_D03_epix10kaquad)
+- test command epix10ka_deploy_constants
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/test_tmp/Detector/test/test_detector", line 253, in test_04_epix10ka_deploy_constants
+    assert os.path.exists(fname_peds)
+AssertionError
+
+======================================================================
+FAIL: test_01_xtc_file_is_available (__main__.test_D04_jungfrau1m)
+- test that xtc file is available for jungfrau1m
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/test_tmp/Detector/test/test_detector", line 290, in test_01_xtc_file_is_available
+    path_exists(self.fname_xtc)
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/test_tmp/Detector/test/test_detector", line 74, in path_exists
+    assert os.path.exists(path)
+AssertionError
+
+======================================================================
+FAIL: test_03_jungfrau_dark_proc (__main__.test_D04_jungfrau1m)
+- test command jungfrau_dark_proc
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/test_tmp/Detector/test/test_detector", line 311, in test_03_jungfrau_dark_proc
+    path_exists(fname_panel_peds, msg='file exists: ')
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/test_tmp/Detector/test/test_detector", line 74, in path_exists
+    assert os.path.exists(path)
+AssertionError
+
+======================================================================
+FAIL: test_04_jungfrau_deploy_constants (__main__.test_D04_jungfrau1m)
+- test command epix10ka_deploy_constants
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/psana_1715381180418/test_tmp/Detector/test/test_detector", line 325, in test_04_jungfrau_deploy_constants
+    assert os.path.exists(fname_peds)
+AssertionError
+
+----------------------------------------------------------------------
+Ran 16 tests in 25.754s
+
+FAILED (failures=9, errors=7)
+fname: /sdf/group/lcls/ds/ana/sw/conda1/inst/envs/ana-4.0.58-py3/data/Detector/geometry-def-jungfrau1m.data
+deployed geometry: ./calib/Jungfrau::CalibV1/XppEndstation.0:Jungfrau.0/geometry/0-end.data  
+Tests failed for psana-4.0.61-py39hed0727e_1.tar.bz2 - moving package to /sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/broken
+WARNING:conda_build.build:Tests failed for psana-4.0.61-py39hed0727e_1.tar.bz2 - moving package to /sdf/group/lcls/ds/ana/sw/conda1/inst/envs/conda_build/conda-bld/broken
+TESTS FAILED: psana-4.0.61-py39hed0727e_1.tar.bz2
+(conda_build) [psreldev@sdfiana002 psana1-feedstock]$ 
+(conda_build) [psreldev@sdfiana002 psana1-feedstock]$ 
+
+EOF

@@ -1,0 +1,12 @@
+diff --git a/extpkgs/pdsdata/ana/XtcSlice.hh b/extpkgs/pdsdata/ana/XtcSlice.hh
+index 20f82a7..545be94 100644
+--- a/extpkgs/pdsdata/ana/XtcSlice.hh
++++ b/extpkgs/pdsdata/ana/XtcSlice.hh
+@@ -7,6 +7,7 @@
+ 
+ #include <list>
+ #include <string>
++#include <pthread.h>
+ 
+ namespace Pds
+ {  
