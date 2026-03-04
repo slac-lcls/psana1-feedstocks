@@ -1,17 +1,17 @@
 {% set name = 'xtcav2' %}
-{% set version = '0.4' %}
+{% set version = '0.5' %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/slaclab/{{ name }}/archive/v{{ version}}.tar.gz
-  sha256: de1208d5ba45fa8a58a5a4f717bd841c50ca68520257ee29a536409aebad227f 
+  url: https://github.com/slaclab/{{ name }}/archive/v{{ version }}.tar.gz
+  sha256: ce960669ea1dae20c2d708188d4725a834b93ce7338514c23b5707f642e9713c
 
 build:
   skip: True  # [win or osx]
-  number: 9
+  number: 0
   script:
     - "{{ PYTHON }} -m pip install . -vv"
 
@@ -52,3 +52,4 @@ extra:
   recipe-maintainers:
     - valmar
     - chrisvam
+    - mavaylon1
