@@ -1,4 +1,10 @@
 channel_sources:
-  - lcls-i,conda-forge,defaults
+  - lcls-i,conda-forge
 channel_targets:
   - lcls-i main
+# Glibc floor used by stdlib('c') in meta.yaml. 2.17 matches the
+# production ana-4.0.68-py3 env and runs on RHEL7, RHEL8 and Rocky 9.
+c_stdlib:
+  - sysroot
+c_stdlib_version:
+  - "2.17"

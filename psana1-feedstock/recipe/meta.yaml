@@ -1,5 +1,5 @@
 {% set name = 'psana' %}
-{% set version = '4.0.65' %}
+{% set version = '5.1.0' %}
 
 package:
   name: {{ name|lower }}
@@ -10,23 +10,24 @@ source:
 #  url: https://s3df.slac.stanford.edu/people/psreldev/{{ name }}-conda-{{ version }}.tar.gz  # WARNING: Error: HTTP 403 FORBIDDEN for url
 #  url: file:///sdf/group/lcls/ds/ana/sw/conda1-v3/manage/downloads/anarel/psana-conda-4.0.62.tar.gz
   url: file:///sdf/group/lcls/ds/ana/sw/conda1-v3/manage/downloads/anarel/{{ name }}-conda-{{ version }}.tar.gz
-  sha256: 2c7b660fd6c73744fd72c3683696387d0670521e14384a9f77af27cf0ca5c8b9
+  sha256: 3470282aadebd29f4791f3370864881cd2debdbb774dbb4f47e237b6e219024a
   patches:
     #- sysroot.patch
-    - header.patch
+    # - header.patch
 
 #    - ndarray_ext.patch
 #    - header.patch
 
 build:
   skip: True  # [win or osx]
-  number: 4
-  patches:
-    - header.patch
+  number: 0
+  # patches:
+          # - header.patch
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib('c') }}          # glibc floor from c_stdlib_version in recipe/conda_build_config.yaml
     - {{ compiler('cxx') }}
     - {{ compiler('fortran') }}
     - {{ cdt('mesa-libgl-devel') }}
@@ -38,15 +39,15 @@ requirements:
     - make
     - patch
   host:
-    - python=3.11
+    - python=3.13
     - scons
-    - libboost-devel
-    - libboost-python-devel
+    - boost-cpp
+    - boost
     - cython
     - xorg-libxfixes
-    - qt
+    - qt 5.15.*                  # psana1 is Qt5; unpinned qt now means Qt6 on conda-forge
     - matplotlib-base
-    - ndarray-psana=1.1.11
+    - ndarray-psana
     - hdf5
     - curl
     - libcurl
@@ -55,27 +56,25 @@ requirements:
     - libuuid
     - six
     - zlib
-    - numpy=1
-    - pytest
+    - numpy
   run:
-    - python=3.11
-    - qt
-    - pyqt
-    - numpy=1
+    - python=3.13
+    - qt 5.15.*
+    - pyqt 5.15.*
+    - numpy
     - matplotlib-base
     - scipy
     - pyzmq
     - hdf5
     - h5py
     - _openmp_mutex
-    - ndarray-psana=1.1.11
+    - ndarray-psana
     - pytables
     - six
     - curl
-    - libcurl 
+    - libcurl
     - libpng
     - libuuid
-    - six
     - zlib
     - {{ pin_compatible('boost') }}
     - {{ pin_compatible('boost-cpp') }}
