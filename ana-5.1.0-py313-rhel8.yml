@@ -1,0 +1,116 @@
+name: ana-5.1.0-py313-rhel8
+# Spec for ana-5.1.0-py313-rhel8.txt (exact packages). Based on psana1-py3-dev.yml.
+# Target: RHEL8 (glibc 2.28). Solve with CONDA_OVERRIDE_GLIBC=2.28 when not on a RHEL8 node.
+# psana 5.1.0 from lcls-i (built with a glibc 2.17 floor, Qt5).
+channels:
+  - conda-forge   # only channel; LCLS packages below name their channel explicitly
+
+dependencies:
+  - python=3.13
+
+  # LCLS packages
+  - lcls-i::psana=5.1.0
+  - lcls-i::ndarray-psana
+  - lcls-ii::amityping
+  - lcls-i::psgeom
+  - lcls-i::psmon=1.0.11=*_11   # rebuilt with matplotlib-base (full matplotlib pulls Qt6)
+  - lcls-i::xtcav2
+  - lcls-ii::networkfox
+
+  # Compilers, held to RHEL7/8-compatible glibc like ana-4.0.68-py3
+  - compilers
+  - sysroot_linux-64=2.17
+
+  # From the ana-4.0.68-py3 top-level list (not already listed below)
+  - anaconda-client
+  - caproto
+  - dask
+  - fftw
+  - gsl
+  - h5netcdf
+  - krtc
+  - lark-parser
+  - mypy
+  - mysql
+  - mysqlclient
+  - numba
+  - pint
+  - pydantic
+  - pynng
+  - pyqode.python
+  - pyqode.qt
+  - pytest-asyncio
+  - qasync
+  - setproctitle
+  - simplejson
+  - sympy
+  - textual
+  - virtualenv
+
+  # Needed by psana1 at runtime (from the feedstock meta.yaml run section)
+  - boost
+  - six
+  - qt=5.15
+  - pyqt=5.15
+
+  # MPI (versions from the old env: openmpi 5.0.10, mpi4py 4.1.2)
+  - openmpi=5.0
+  - mpi4py=4.1
+
+  # Core scientific stack
+  - numpy
+  - scipy
+  - pandas
+  - matplotlib-base
+  - h5py=*=nompi*   # keep the non-MPI builds, as in the old env
+  - hdf5=*=nompi*
+  - pytables
+  - pyzmq
+
+  # Imaging / analysis stack
+  - scikit-image
+  - scikit-learn
+  - scikit-beam
+  # "-base" forms: the full packages pull PySide6/Qt6, which can't coexist with Qt5
+  - pyfai-base
+  - silx-base
+  - fabio
+  - imageio
+  - tifffile
+  - imagecodecs
+  - opencv
+  - py-opencv
+  - pyopencl
+  - pyfftw
+  - xarray
+  - zarr
+
+  # GUI/Jupyter/user tools
+  - pyqtgraph
+  - jupyter
+  - jupyterlab
+  - notebook
+  - ipykernel
+  - ipython
+  - ipympl
+  - ipywidgets
+  - bokeh
+  - panel
+  - holoviews
+  - plotly
+  - seaborn-base
+
+  # Developer/runtime tools
+  - pytest
+  - pytest-qt
+  - scons
+  - cython
+  - git
+  - cmake
+  - requests
+  - pyyaml
+  - pymongo
+  - pyepics
+  - kafka-python
+  - gunicorn
+  - flask
