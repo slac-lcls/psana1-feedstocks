@@ -1,5 +1,5 @@
 {% set name = "psmon" %}
-{% set version = "1.0.11" %}
+{% set version = "1.0.12" %}
 
 # Recipe recovered from the psmon 1.0.9 package on lcls-i (info/recipe),
 # originally from valmar's psana2 feedstocks. Changes:
@@ -14,12 +14,12 @@ package:
   version: {{ version }}
 
 source:
-  git_url: https://github.com/slaclab/{{ name }}.git
-  git_rev: {{ version }}
+  url: https://github.com/slaclab/{{ name }}/archive/{{ version }}.tar.gz 
+  sha256: e9dc5cd1bc408ff04d8a05832efea4e8bf76fd50bc7af24b318d3da9195ec2a9
 
 build:
   noarch: python
-  number: 11
+  number: 0
   script:
     - "{{ PYTHON }} -m pip install . -vv"
 
