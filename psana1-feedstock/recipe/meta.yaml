@@ -1,5 +1,5 @@
 {% set name = 'psana' %}
-{% set version = '5.1.0' %}
+{% set version = '5.1.1' %}
 
 package:
   name: {{ name|lower }}
@@ -10,7 +10,7 @@ source:
 #  url: https://s3df.slac.stanford.edu/people/psreldev/{{ name }}-conda-{{ version }}.tar.gz  # WARNING: Error: HTTP 403 FORBIDDEN for url
 #  url: file:///sdf/group/lcls/ds/ana/sw/conda1-v3/manage/downloads/anarel/psana-conda-4.0.62.tar.gz
   url: file:///sdf/group/lcls/ds/ana/sw/conda1-v3/manage/downloads/anarel/{{ name }}-conda-{{ version }}.tar.gz
-  sha256: 3470282aadebd29f4791f3370864881cd2debdbb774dbb4f47e237b6e219024a
+  sha256: a2b38661568f576ba584172309593daa8bfa2e8a1e5e3051e48f50735e18e96f
   patches:
     #- sysroot.patch
     # - header.patch
