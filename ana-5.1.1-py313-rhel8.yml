@@ -1,5 +1,5 @@
 name: ana-5.1.1-py313-rhel8
-# Env spec; the exact-package .txt will be regenerated from it. Based on psana1-py3-dev.yml.
+# Spec for ana-5.1.1-py313-rhel8.txt (exact packages). Based on psana1-py3-dev.yml.
 # Target: RHEL8 (glibc 2.28). Solve with CONDA_OVERRIDE_GLIBC=2.28 when not on a RHEL8 node.
 # psana 5.1.1 from lcls-i (built with a glibc 2.17 floor, Qt5).
 channels:
