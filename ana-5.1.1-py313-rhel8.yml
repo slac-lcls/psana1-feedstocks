@@ -1,7 +1,7 @@
-name: ana-5.1.0-py313-rhel8
-# Spec for ana-5.1.0-py313-rhel8.txt (exact packages). Based on psana1-py3-dev.yml.
+name: ana-5.1.1-py313-rhel8
+# Env spec; the exact-package .txt will be regenerated from it. Based on psana1-py3-dev.yml.
 # Target: RHEL8 (glibc 2.28). Solve with CONDA_OVERRIDE_GLIBC=2.28 when not on a RHEL8 node.
-# psana 5.1.0 from lcls-i (built with a glibc 2.17 floor, Qt5).
+# psana 5.1.1 from lcls-i (built with a glibc 2.17 floor, Qt5).
 channels:
   - conda-forge   # only channel; LCLS packages below name their channel explicitly
 
@@ -9,12 +9,12 @@ dependencies:
   - python=3.13
 
   # LCLS packages
-  - lcls-i::psana=5.1.0
+  - lcls-i::psana=5.1.1
   - lcls-i::ndarray-psana
   - lcls-ii::amityping
   - lcls-i::psgeom
   - lcls-i::psmon=1.0.11=*_11   # rebuilt with matplotlib-base (full matplotlib pulls Qt6)
-  - lcls-i::xtcav2
+  - lcls-i::xtcav2=1.1
   - lcls-ii::networkfox
 
   # Compilers, held to RHEL7/8-compatible glibc like ana-4.0.68-py3
